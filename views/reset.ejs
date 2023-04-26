@@ -1,0 +1,14 @@
+<%- include('./partials/header')%>
+<div class="container mt-5 form-control w-50 bg-success">
+  <form action="/resetpassword" method="post">
+  <h1 class="fw-dark fs-4 alert alert-dark w-100 text-center">✔✍Continue Changing Password✔✍</h1>
+    <input class="form-control w-100" type="text" placeholder="oldpassword" name="oldpassword"><br>
+    <input class="form-control w-100" type="text" placeholder="newpassword" name="newpassword"><br>
+    <button class="btn btn-dark w-100 fs-4">Reset Password</button><br><br>
+  </form>
+</div>
+
+
+
+
+<%- include('./partials/footer')%>

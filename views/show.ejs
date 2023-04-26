@@ -1,0 +1,132 @@
+<%- include('./partials/header')%>
+
+<div class="container mt-3">
+    
+    <div class="resume shadow p-3">
+        <page size="A4">
+            <h1 class="text-center fs-1 w-100" style="background-color: rgba(34, 33, 33, 0.527);">RESUME</h1>
+            <div class="w-100 mt-4" style="display: flex; justify-content: space-between; background-color: rgb(223, 174, 96);">
+            <div class="w-50 " style="padding-left: 120px;">
+             <img class="mt-4" height="150" width="150" style="object-fit: cover; border-radius: 50%"
+             src="/images/<%= user.avatar%>"alt=""/>
+             <h6 class="fw-light fs-2 mt-3">👤<%= user.username%></h6>
+             <h5 class="fw-light fs-3 mt-3">📧<%= user.email%></h5>
+             <h6 class="fw-light fs-4 mt-4">📞<%= user.contact%></h6>
+
+             <hr class="w-75 border border-dark border-2">
+
+             <h3 class="fw-semibold mt-5 fs-3">Skill</h3>
+             <div class="d-flex flex-wrap flex-row">
+                <% user.skill.forEach((e, i)=> { %>
+                <div class="card me-3 mb-3" style="width: 18rem">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= e.skill%></h5>
+                    </div>
+                </div>
+                <% })%>
+             </div>
+
+             <h3 class="fw-semibold fs-3">Interest</h3>
+             <div class="d-flex flex-wrap">
+                 <% user.interest.forEach((e, i)=> { %>
+                 <div class="card me-3 mb-3" style="width: 18rem">
+                     <div class="card-body">
+                         <h5 class="card-title"><%= e.interest%></h5>
+                     </div>
+                 </div>
+                 <% })%>
+             </div>
+
+             
+
+
+
+
+            </div>
+
+           
+
+        <div class="w-50 mt-4" style="padding-left: 50px; border-left: 1px solid black;">
+            <h3 class="fw-semibold fs-3">Education</h3>
+            <div class="d-flex flex-wrap">
+                <% user.education.forEach((e, i)=> { %>
+                <div class="card me-3 mb-3" style="width: 18rem">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= e.degree%></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            <%= e.institute%> - <%= e.year%> | <%=
+                            e.university%>
+                        </h6>
+                        <p class="card-text">CGPA/PERCENTAGE <%= e.grade%></p>
+                    </div>
+                </div>
+                <% })%>
+            </div>
+
+
+            <h3 class="fw-semibold fs-3">Project</h3>
+            <div class="d-flex flex-wrap">
+                <% user.project.forEach((e, i)=> { %>
+                <div class="card me-3 mb-3" style="width: 18rem">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= e.title%></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            <%= e.description%> - <%= e.technology%> 
+                        </h6>
+                        <p class="card-text"> <%= e.link%></p>
+                    </div>
+                </div>
+                <% })%>
+            </div>
+
+
+            <h3 class="fw-semibold fs-3">Experience</h3>
+            <div class="d-flex flex-wrap">
+                <% user.experience.forEach((e, i)=> { %>
+                <div class="card me-3 mb-3" style="width: 18rem">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= e.company%></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            <%= e.designation%> - <%= e.duration%>
+                        </h6>
+                    </div>
+                </div>
+                <% })%>
+            </div>
+
+
+           
+        </div>
+            </div>
+
+
+
+
+        </page>
+    </div>
+    <button class="printbtn mt-3 btn btn-success">Print</button>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://kendo.cdn.telerik.com/2017.1.223/styles/kendo.common.min.css"
+/>
+<script src="https://kendo.cdn.telerik.com/2017.1.223/js/jszip.min.js"></script>
+<script src="https://kendo.cdn.telerik.com/2017.1.223/js/kendo.all.min.js"></script>
+
+<script>
+    function getPDF(selector) {
+        kendo.drawing.drawDOM($(selector)).then(function (group) {
+            kendo.drawing.pdf.saveAs(group, "testing.pdf");
+        });
+    }
+</script>
+<script type="text/javascript">
+    $(".printbtn").click(function () {
+        getPDF(".resume");
+    });
+</script>
+
+<%- include('./partials/footer')%>

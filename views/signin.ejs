@@ -1,0 +1,20 @@
+<%- include('./partials/header')%>
+
+<div class="" style="width: 100; height: 601px; background-color: rgb(76, 92, 95); padding-top: 50px;">
+<div class="container form-control w-50 bg-success">
+  <form action="/signin" method="post">
+  <h1 class="fw-dark fs-4 alert alert-dark w-100 text-center">✔✍Sign In To Build Resume✔✍</h1>
+    <input class="form-control w-100" type="text" placeholder="username" name="username"><br>
+    <input class="form-control w-100" type="text" placeholder="password" name="password"><br>
+    
+    <button class="btn btn-dark w-100 fs-4">Signin</button><br><br>
+  </form>
+  <p class="d-flex w-100 justify-content-end"><a class="text-warning fs-4" href="/forgetpssword">Forget Password</a></p>
+  <p class="mt-3 fs-3">Don't Have An Account?<a class="text-warning" href="/signup">SignUp</a></p>
+</div>
+</div>
+
+
+
+
+<%- include('./partials/footer')%>
